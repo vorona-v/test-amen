@@ -1,0 +1,61 @@
+@import "./mixin";
+@import "./variable";
+@import "./colors";
+
+
+.header-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 15;
+    @include transition(background 0.2s);
+
+    &.fixed {
+        background-color: #ffffff;
+    }
+}
+
+nav.top-menu {
+    @include flexbox;
+    align-items: center;
+    
+    padding: 0 30px;
+    height: 70px;
+
+    @include min-medium {
+        padding: 0 31px;
+        justify-content: space-between;
+    }
+}
+
+.navbar-logo {
+    @include flexbox;
+    align-items: center;
+    text-transform: capitalize;
+
+    img {
+        vertical-align: bottom;
+        width: 45px;
+        margin-right: 7px;
+    }
+}
+
+.right-nav-menu {
+    @include flexbox;
+    align-items: center;
+
+    .btn {
+        margin-left: 48px
+    }
+}
+
+.menu-main {
+    @include list;
+    @include flexbox;
+    align-items: center;
+
+    li {
+        margin-left: 48px;
+    }
+}

@@ -1,0 +1,269 @@
+@import "assets/scss/mixin";
+@import "assets/scss/variable";
+@import "assets/scss/fonts";
+
+@import "assets/scss/animated";
+@import "assets/scss/preloadder";
+@import "assets/scss/header";
+@import "assets/scss/buttons";
+@import "assets/scss/delivery-service";
+@import "assets/scss/service-offers";
+@import "assets/scss/service-guarantees";
+@import "assets/scss/how-it-works";
+@import "assets/scss/simple-and-absolutely-safe";
+
+@import "assets/scss/footer";
+
+
+/*********************************
+COMMON STYLE
+*********************************/
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box
+}
+a,
+:before, :after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box
+}
+
+.clearfix {
+  &:before, &:after {
+    display: table;
+    content: " ";
+  }
+  &:after {
+    clear: both;
+  }
+
+  .helper {
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    width: 0;
+  }
+}
+
+a,
+a:hover,
+a:focus,
+a:visited {
+  text-decoration: none;
+}
+
+a, a:hover, a:focus,
+input, input:hover, input:focus,
+textarea, textarea:hover, textarea:focus,
+button, button:hover, button:focus, select {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+ul {
+  @include list;
+}
+
+body {
+  font-family: 'SF UI Text', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #000000;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include min-large {
+    max-width: 1200px;
+    padding: 0 15px;
+  }
+}
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+
+h1 {
+  font-family: 'SF UI Display', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 1.2;
+  line-height: 1.34;
+  text-align: center;
+
+  @include min-small {
+    font-size: 50px;
+  }   
+}
+
+h2 {
+  font-family: 'SF UI Display', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.5;
+
+  @include min-small {
+    font-size: 30px;
+  } 
+}
+
+h3 {
+  font-family: 'SF UI Text', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.67;
+}
+
+h6 {
+  font-family: 'SF UI Text', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 2.2;
+  margin-bottom: 10px;
+  color: #395159;
+}
+
+
+.form-wrap {
+  @include min-small {
+    @include flexbox;
+    align-items: center;
+    margin: 0 -15px;
+  }
+
+  .input-wrap {
+    flex: 0 0 100%;
+    @include flexbox;
+    flex-direction: column;
+
+    @include min-small {
+      flex: 0 0 33.33%;
+      padding: 0 15px;
+    }
+  }
+
+  .input-name {
+    font-family: 'SF UI Text', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 2.2;
+    margin-bottom: 10px;
+    color: #395159;
+  }
+
+  .input, select, .selectra-btn {
+    @include border-radius(5px);
+    background: #FFFFFF;
+    height: 60px;
+    @include flexbox;
+    align-items: center;
+    padding: 10px 20px;
+    border: none;
+    width: 100%;
+
+    &:focus-visible {
+     outline: none;
+    }
+  }
+
+  .selectra-container, .selectra-handler-container {
+    width: 100%;
+  }
+
+  .selectra-handler-icon {
+    top: 50%;
+    @include transform(translateY(-50%));
+    right: 0.7rem;
+    width: 32px;
+  }
+  .selectra-options.open+.selectra-handler-container .selectra-handler-icon {
+    @include transform(translateY(-50%) rotateZ(180deg));
+  }
+}
+
+
+/*********************************
+COMMON STYLE END
+*********************************/
+
+.social-wrap {
+  margin: 49px 0 35px;
+}
+
+.social-btn-wrap {
+  @include min-small {
+    @include flexbox;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .social-btn {
+    margin-bottom: 15px;
+    width: 100%;
+
+    @include min-small {
+      width: 24%;
+    }   
+  }
+  
+}
+
+.calender {
+  z-index: 15;
+  height: 250px;
+  background-color: #ffffff;
+}
+
+.calender > .sp-cal-title > a:first-child,
+.calender > .sp-cal-title > a:last-child {
+  display: none;
+}
+
+.calender > .sp-cal-days > a {
+  width: 38px;
+  height: 24px;
+  font-size: 14px;
+  line-height: 1;
+  color: #000000;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(3, 155, 229, 0.16);
+}
+
+.calender > .sp-cal-title {
+  margin-bottom: 10px;
+  font-weight: bolder;
+  font-size: 18px;
+  height: auto;
+  justify-content: space-between;
+  padding: 4px 7px;
+}
+.calender > .sp-cal-label-days {
+  color: #000000;
+}
+
+
+
+.plane-image-wrap {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  pointer-events: none;
+}

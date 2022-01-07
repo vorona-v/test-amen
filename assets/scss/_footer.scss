@@ -1,0 +1,115 @@
+@import "./mixin";
+
+.footer-section {
+    color: #ffffff;
+    background: #000000;
+    padding: 83px 0 96px;
+
+    .navbar-logo {
+        color: #ffffff;
+        display: inline-block;
+        margin-bottom: 25px
+    }
+
+    .nav-items-wrap {
+        @include flexbox;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 15px;
+
+        @include min-small {
+            flex-direction: column;
+            align-items: flex-start;
+            width: 30%;
+        }
+
+        @include min-medium {
+            width: 26%;
+        }
+    }
+
+    .social-menu {
+        .nav-item {
+            margin: 0 15px 22px 0;
+        }
+    }
+
+    .contact-us-menu {
+        .nav-link img {
+            margin: 0;
+        }
+
+
+        @include min-small {
+            //align-items: center;
+            flex-direction: initial;
+        }
+
+        @include min-medium {
+            //width: 44%;
+            flex-grow: 1;
+            justify-content: space-between;
+
+            .nav-item {
+                margin: 0;
+            }
+        }
+    }
+
+    .nav-item {
+        margin: 0 10px 15px 0;
+
+        &:first-child {
+            width: 100%;
+        }
+
+        @include min-small {
+            margin: 0 15px 25px 0;
+        }
+    }
+
+    .nav-link {
+        @include flexbox;
+        align-items: center;
+        color: #ffffff;
+
+        img {
+            margin-right: 12px;
+        }
+    }
+}
+
+.footer-nav-menu {
+    margin-top: 35px;
+    @include min-small {
+        @include flexbox;
+        flex-grow: 1;
+        margin-top: 0;
+    }
+    @include min-medium {
+        padding-left: 126px;
+    }
+}
+
+.footer-top-menu {
+    margin-bottom: 20px;
+    @include min-medium {
+        @include flexbox;
+        margin-bottom: 40px;
+    }
+}
+
+.footer-top-info {
+    @include min-medium {
+        width: 31%;
+    }
+}
+
+.footer-bottom-menu {
+    @include flexbox;
+    align-items: center;
+    flex-wrap: wrap;
+    .copirate {
+        margin-right: 55px;
+    }
+}

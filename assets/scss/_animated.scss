@@ -1,0 +1,40 @@
+
+.element-animation-js {
+	opacity: 0;
+	-webkit-transform: translateY(50px);
+    transform: translateY(50px);
+
+	&.element-show-js {
+		opacity: 1;
+		transition: all 1.5s;
+		transform: translateY(0%);
+    }
+}
+
+
+
+@keyframes gum-2 {
+    from {right: 10%;}
+    75% {right: 26%;}
+    to {right: 22%;}
+}
+@keyframes gum-3 {
+    from {right: 12%;}
+    75% {right: 42%;}
+    to {right: 37%;}
+}
+@keyframes gum-4 {
+    from {right: 14%;}
+    75% {right: 57%;}
+    to {right: 53%;}
+}
+@keyframes gum-5 {
+    from {right: 14%;}
+    75% {right: 69%;}
+    to {right: 65%;}
+}
+@keyframes gum-6 {
+    from {right: 5%;}
+    75% {right: 82%;}
+    to {right: 78%;}
+}

@@ -1,0 +1,77 @@
+@import "./mixin";
+
+.our-service-guarantees-section {
+    background: #F0FBFD;
+    padding: 117px 0 259px;
+
+    .btn {
+        margin: 0 auto;
+    }
+
+    h1 {
+        margin-bottom: 40px;
+    }
+}
+
+.our-service-guarantees-wrap {
+    margin-bottom: 36px;
+    @include min-medium {
+        @include flexbox;
+        align-items: flex-start;
+    }
+
+    
+}
+
+.our-service-guarantees-list {
+    @include list;
+    
+    @include min-medium {
+        width: 50%;
+        margin: 6px 28px 0 0;
+    }
+    .our-service-guarantees-item {
+        position: relative;
+
+        font-family: 'SF UI Text', sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 1.4;
+        margin-bottom: 36px;
+        padding-left: 45px;
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: -3px;
+            width: 40px;
+            height: 40px;
+            background-image: url("./assets/images/check-icon.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+
+        @include min-medium {
+            padding-left: 88px;
+            font-size: 18px;
+            line-height: 1.67;
+
+            &:before {
+                left: -11px;
+                top: -23px;
+                width: 80px;
+                height: 80px;
+            }
+        }
+    }
+
+}
+
+.our-service-guarantees-info {
+    @include min-medium {
+        width: 50%;
+    }
+}

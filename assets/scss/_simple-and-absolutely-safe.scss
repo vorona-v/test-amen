@@ -1,0 +1,25 @@
+@import "./mixin";
+
+.simple-and-absolutely-safe-section {
+    background: #4CD964;
+    padding: 40px 0;
+
+    @include min-medium {
+        padding: 183px 0 192px;
+
+    }
+
+    h1 {
+        margin-bottom: 27px;
+    }
+
+    h1, h2 {
+        text-align: center;
+        color: #ffffff;
+    }
+}
+
+.simple-and-absolutely-safe-icon {
+    text-align: center;
+    margin-bottom: 13px;
+}

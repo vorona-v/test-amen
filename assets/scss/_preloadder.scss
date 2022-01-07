@@ -1,0 +1,91 @@
+@import "./mixin";
+
+.preloadder-wrap {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    opacity: 0;
+    visibility: hidden;
+    @include flexbox-center;
+    background: linear-gradient(0deg, #F0FBFD, #F0FBFD), radial-gradient(100% 142.86% at 0% 46.79%, #F1FDFE 0%, #EFFCFE 11.79%, #EBFAFE 41.79%, #D6F1FA 71.41%, #C3EAF7 100%);
+
+    &.show {
+        z-index: 20;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .preloadder {
+        width: 160px;
+        height: 160px;
+        border: 5px solid #FFFFFF;
+        @include border-radius(50%);
+        overflow: hidden;
+        @include flexbox-center;
+        position: relative;
+        box-shadow: 5px 5px 15px rgba(142, 192, 207, 0.2);
+        background: radial-gradient(100% 142.86% at 0% 46.79%, #F1FDFE 0%, #EFFCFE 11.79%, #EBFAFE 41.79%, #D6F1FA 71.41%, #C3EAF7 100%);
+
+    }
+
+    .big-cloud, .small-cloud {
+        position: absolute;
+    }
+
+    .plane {
+        height: 65px;
+
+        animation: plane 1s linear infinite;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    .top-cloud {
+        &.big-cloud {
+            top: -40px;
+            left: -40px;
+            animation: cloud 1s linear infinite;
+        }
+
+        &.small-cloud {
+            top: -20px;
+            left: 76px;
+            animation: cloud 1s linear infinite;
+        }
+    }
+
+    .bottom-cloud {
+        &.big-cloud {
+            bottom: -60px;
+            left: -40px;
+            animation: cloud1 1s linear infinite;
+        }
+
+        &.small-cloud {
+            bottom: -42px;
+            left: 56px;
+            animation: cloud1 1s linear infinite;
+        }
+    }
+}
+
+@keyframes plane {
+    from { transform: translateY(5px); }
+    50% { transform: translateY(-5px); }
+    to   { transform: translateY(5px); }
+}
+
+@keyframes cloud {
+    from { transform: translateX(230px); }
+    to   { transform: translateX(-230px); }
+}
+
+@keyframes cloud1 {
+    from { transform: translateX(140px); }
+    to   { transform: translateX(-140px); }
+}
