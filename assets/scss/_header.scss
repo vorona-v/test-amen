@@ -14,18 +14,79 @@
     &.fixed {
         background-color: #ffffff;
     }
+
+    &.active {
+        background-color: #ffffff;
+    }
 }
 
 nav.top-menu {
     @include flexbox;
     align-items: center;
-    
+    justify-content: space-between;
+    position: relative;
+
     padding: 0 30px;
     height: 70px;
 
     @include min-medium {
         padding: 0 31px;
-        justify-content: space-between;
+    }
+}
+
+.nav-btn {
+    @include flexbox;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 20px;
+    height: 13px;
+
+    @include min-medium {
+        display: none;
+    }
+
+    span {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background: #191718;
+        left: 0;
+        @include transition(all .2s ease-in-out);
+        
+        &:first-child {
+            top: 0;
+        }
+
+        &:nth-child(2) {
+            top: 6px;
+        }
+
+        &:last-child {
+            bottom: 0;
+        }
+    }
+
+    .active & {
+        span {
+            &:first-child {
+                top: 50%;
+                @include transform(rotate(135deg) translate(-1px,0));
+            }
+
+            &:nth-child(2) {
+                opacity: 0;
+            }
+
+            &:last-child {
+                bottom: 50%;
+                @include transform(rotate(-135deg) translate(-1px,0));
+            }
+        }
     }
 }
 
@@ -33,20 +94,55 @@ nav.top-menu {
     @include flexbox;
     align-items: center;
     text-transform: capitalize;
+    color: #000000;
+    font-size: 22px;
+    font-weight: 700;
 
     img {
         vertical-align: bottom;
         width: 45px;
         margin-right: 7px;
+        display: none;
+    }
+
+    @include min-medium {
+        img {
+            display: block;
+        }
     }
 }
 
 .right-nav-menu {
-    @include flexbox;
     align-items: center;
+    
+    .active & {
+        @include flexbox;
+        @include transition(background 0.2s);
+    }
 
-    .btn {
-        margin-left: 48px
+    @include max-medium {
+        background-color: #ffffff;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        display: none;
+        padding-bottom: 30px;
+        height: calc(100vh - 70px);
+        flex-direction: column;
+    }
+
+
+    @include min-medium {
+        @include flexbox;
+        align-items: center;
+        padding-bottom: 0;
+        height: auto;
+
+
+        .btn {
+            margin-left: 48px
+        }
     }
 }
 
@@ -54,8 +150,24 @@ nav.top-menu {
     @include list;
     @include flexbox;
     align-items: center;
+    flex-direction: column;
 
     li {
-        margin-left: 48px;
+        margin: 0 0 25px;
+        
+
+        a {
+            font-size: 14px;
+            font-weight: 400;
+            color: #000000;
+        }
+    }
+
+    @include min-medium {
+        flex-direction: row;
+
+        li {
+            margin: 0 0 0 48px;
+        }
     }
 }

@@ -10,7 +10,15 @@ function removeClassById(id, removedClass) {
 
 setTimeout(function() {
   removeClassById('preloadder_wrap', "show")
+
+  addClassById('big_plane', 'show')
+  addClassById('small_cloud', 'show')
+  addClassById('big_cloud', 'show')
+  addClassById('big_dollar', 'show')
+  addClassById('small_dollar', 'show')
 }, 3000);
+
+
 
 function fixedHeader() {
   let scrollpos = window.scrollY
@@ -30,6 +38,15 @@ function fixedHeader() {
   })
 }
 
+
+const navBtn = document.querySelector(".nav-btn");
+const navMenu = document.querySelector(".header-section");
+
+navBtn.onclick = () => {
+  navMenu.classList.toggle('active');
+}
+
+
 function initDatepicker() {
   let datepicker = new DatePicker(document.getElementById('datepicker'));
 }
@@ -39,10 +56,10 @@ function initCustomSelect() {
   customSelectra.init()
 }
 
-function animatedElement(element, delay) {
+function animatedElement(element, delay, position) {
   function onEntry(entry) {
     let delayInMilliseconds = 0;
-  
+
     entry.forEach(change => {
       if (change.isIntersecting) {
         setTimeout(function() {
@@ -54,7 +71,7 @@ function animatedElement(element, delay) {
   }
 
   let options = {
-    threshold: [0.6]
+    threshold: [position]
   };
 
   let observer = new IntersectionObserver(onEntry, options);
@@ -65,6 +82,28 @@ function animatedElement(element, delay) {
   }
 }
 
+function animatedCheckList() {
+  let intViewportHeight = window.innerHeight/2;
+  let checkList = document.querySelectorAll('.how-it-works-item');
+  
+  for ( let check of checkList) {
+    let positionCkeck = check.getBoundingClientRect().top;
+
+    if( positionCkeck <= intViewportHeight ) {
+      check.classList.add("ckecked")
+    }
+  }
+}
+
+function animatedIcon() {
+  let intViewportHeight = window.innerHeight/2;
+  let iconWrap = document.querySelector('.simple-and-absolutely-icon');
+  let positionCkeck = iconWrap.getBoundingClientRect().top;
+ 
+  if( positionCkeck <= intViewportHeight ) {
+    iconWrap.classList.add("show")
+  }
+}
 
 function animatedPlane() {
   let intViewportWidth = document.body.clientWidth
@@ -74,62 +113,33 @@ function animatedPlane() {
 
   svg.style.width = intViewportWidth
   svg.style.height = intBodyHeight
-  svg.setAttribute("viewBox", "350 400 " + intViewportWidth + " " + intBodyHeight );
+  svg.setAttribute("viewBox", "0 0 " + intViewportWidth + " " + intBodyHeight );
 
-  paths = svg.getElementsByTagName('path');
+  path = svg.getElementById('path');
+  var pathLen = path.getTotalLength();
 
-  console.log(paths)
-
-  /* paths.forEach(function() {
-    console.log(path.getTotalLength());
-  }) */
-
-  let pathsTotalLength = 0;
-  for (let item of paths) {
-
-    pathsTotalLength += item.getTotalLength()
-
-  }
-
-  console.log(pathsTotalLength)
+   let scrollPercentage = 1 - (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
 
   var pt = path.getPointAtLength(scrollPercentage * pathLen);
+
+  var dot = document.getElementById("plane");
+  dot.setAttribute("transform", "translate("+ pt.x + "," + pt.y + ")");
+
 }
 
 
-/* 
-function positionTheDot() {
+//window.addEventListener("scroll", animatedPlane);
 
-  // Какой процент вниз по странице 
-  var scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
-
-  // Получить длину пути
-  var path = document.getElementById("lines");
-  var pathLen = path.getTotalLength();
-
-
-  
-  // Получить положение точки в <scrollPercentage> вдоль пути.
-  var pt = path.getPointAtLength(scrollPercentage * pathLen);
-  
-  // Поместите красную точку в эту точку
-  var dot = document.getElementById("plane");
-  dot.setAttribute("transform", "translate("+ pt.x + "," + pt.y + ")");
-  
-};
-
-// Обновить положение точки при получении события прокрутки.
-window.addEventListener("scroll", positionTheDot);
-
-// Установите начальную позицию точки.
-positionTheDot(); */
-
-
-
+window.addEventListener("scroll", animatedCheckList);
+window.addEventListener("scroll", animatedIcon);
 
 
 fixedHeader()
 initDatepicker()
 initCustomSelect()
-animatedElement('.our-service-offers-section', 150)
+animatedElement('.our-service-offers-section', 150, 0.5)
+animatedElement('.our-service-offers-info-wrap', 150, 0.3)
+animatedElement('.how-it-works-item', 350, 0)
+animatedElement('.our-service-guarantees-item', 350, 0.5)
+animatedElement('.our-service-guarantees-info', 350, 0.5)
 animatedPlane()

@@ -3,6 +3,7 @@
 .how-it-works-section {
     background: #F0FBFD;
     padding: 50px 0 170px;
+    position: relative;
 
     .btn {
         margin: 0 auto;
@@ -11,14 +12,53 @@
     h1 {
         margin-bottom: 97px;
     }
+
+    .top-cloud {
+        position: absolute;
+        left: 8.5%;
+        top: 17%;
+        @include flexbox;
+        flex-direction: row-reverse;
+
+        img {
+            width: 100%;
+        }
+
+        .big-cloud {
+            margin-left: -61px;
+            margin-top: 14px;
+            width: 114px;
+        }
+    }
+
+    .bottom-cloud {
+        position: absolute;
+        left: 8.8%;
+        top: 44.5%;
+
+        img {
+            width: 100%;
+        }
+
+        .big-cloud {
+            width: 162px;
+        }
+
+        .small-cloud {
+            width: 124px;
+            margin-left: 118px;
+            margin-top: -18px;
+        }
+    }
 }
 
 .how-it-works-list {
-    width: 52%;
+    width: 100%;
     margin: 0 0 60px auto;
 
     @include min-medium {
         padding-right: 90px;
+        width: 52%;
     }
 
     .how-it-works-item {
@@ -31,6 +71,9 @@
         font-size: 14px;
         line-height: 1.4;
         margin-bottom: 36px;
+        opacity: 0;
+        @include transform(translateY(60px));
+
         &:last-child {
             margin-bottom: 0;
         }
@@ -46,6 +89,19 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
+        }
+
+        &.ckecked {
+            &:before {
+                transition: background-image 0.5s;
+                background-image: url("./assets/images/check-icon-green.svg");
+            }
+        }
+
+        &.element-show-js {
+            opacity: 1;
+            transition: all 2s;
+            @include transform(translateY(0%));
         }
 
         @include min-medium {

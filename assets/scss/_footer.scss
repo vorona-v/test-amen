@@ -41,18 +41,12 @@
 
 
         @include min-small {
-            //align-items: center;
             flex-direction: initial;
         }
 
         @include min-medium {
-            //width: 44%;
             flex-grow: 1;
             justify-content: space-between;
-
-            .nav-item {
-                margin: 0;
-            }
         }
     }
 

@@ -9,13 +9,15 @@
     z-index: 0;
     opacity: 0;
     visibility: hidden;
-    @include flexbox-center;
+    
+    display: none;
     background: linear-gradient(0deg, #F0FBFD, #F0FBFD), radial-gradient(100% 142.86% at 0% 46.79%, #F1FDFE 0%, #EFFCFE 11.79%, #EBFAFE 41.79%, #D6F1FA 71.41%, #C3EAF7 100%);
 
     &.show {
         z-index: 20;
         opacity: 1;
         visibility: visible;
+        @include flexbox-center;
     }
 
     .preloadder {
@@ -38,7 +40,7 @@
     .plane {
         height: 65px;
 
-        animation: plane 1s linear infinite;
+        animation: preloadder_plane 1s linear infinite;
 
         img {
             height: 100%;
@@ -49,13 +51,13 @@
         &.big-cloud {
             top: -40px;
             left: -40px;
-            animation: cloud 1s linear infinite;
+            animation: preloadder_cloud 1s linear infinite;
         }
 
         &.small-cloud {
             top: -20px;
             left: 76px;
-            animation: cloud 1s linear infinite;
+            animation: preloadder_cloud 1s linear infinite;
         }
     }
 
@@ -63,29 +65,29 @@
         &.big-cloud {
             bottom: -60px;
             left: -40px;
-            animation: cloud1 1s linear infinite;
+            animation: preloadder_cloud1 1s linear infinite;
         }
 
         &.small-cloud {
             bottom: -42px;
             left: 56px;
-            animation: cloud1 1s linear infinite;
+            animation: preloadder_cloud1 1s linear infinite;
         }
     }
 }
 
-@keyframes plane {
+@keyframes preloadder_plane {
     from { transform: translateY(5px); }
     50% { transform: translateY(-5px); }
     to   { transform: translateY(5px); }
 }
 
-@keyframes cloud {
+@keyframes preloadder_cloud {
     from { transform: translateX(230px); }
     to   { transform: translateX(-230px); }
 }
 
-@keyframes cloud1 {
+@keyframes preloadder_cloud1 {
     from { transform: translateX(140px); }
     to   { transform: translateX(-140px); }
 }

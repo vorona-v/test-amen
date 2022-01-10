@@ -2,7 +2,7 @@
 
 .our-service-guarantees-section {
     background: #F0FBFD;
-    padding: 117px 0 259px;
+    padding: 90px 0 60px;
 
     .btn {
         margin: 0 auto;
@@ -11,16 +11,19 @@
     h1 {
         margin-bottom: 40px;
     }
+
+    @include min-medium {
+        padding: 117px 0 259px;
+    }
 }
 
 .our-service-guarantees-wrap {
     margin-bottom: 36px;
+
     @include min-medium {
         @include flexbox;
         align-items: flex-start;
     }
-
-    
 }
 
 .our-service-guarantees-list {
@@ -40,6 +43,15 @@
         line-height: 1.4;
         margin-bottom: 36px;
         padding-left: 45px;
+
+        opacity: 0;
+        @include transform(translateY(60px));
+
+        &.element-show-js {
+            opacity: 1;
+            transition: all 1.5s;
+            @include transform(translateY(0%));
+        }
 
         &:before {
             content: '';
@@ -71,6 +83,15 @@
 }
 
 .our-service-guarantees-info {
+    opacity: 0;
+    @include transform(translateY(60px));
+
+    &.element-show-js {
+        opacity: 1;
+        transition: all 1.5s;
+        @include transform(translateY(0%));
+    }
+
     @include min-medium {
         width: 50%;
     }

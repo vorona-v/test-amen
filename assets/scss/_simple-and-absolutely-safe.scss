@@ -1,8 +1,10 @@
 @import "./mixin";
 
 .simple-and-absolutely-safe-section {
-    background: #4CD964;
+    background: hsl(130, 65%, 57%);
     padding: 40px 0;
+
+    overflow: hidden;
 
     @include min-medium {
         padding: 183px 0 192px;
@@ -17,9 +19,118 @@
         text-align: center;
         color: #ffffff;
     }
+
+    .container {
+        position: relative;
+    }
+
+    .left-cloud {
+        position: absolute;
+        top: -56px;
+        left: -130px;
+
+        img {
+            width: 100%;
+        }
+
+        .big-cloud {
+            width: 162px;
+        }
+
+        .medium-cloud {
+            margin-left: 119px;
+            width: 122px;
+            margin-top: -16px;
+        }
+
+        .small-cloud {
+            margin-top: -74px;
+            margin-left: -97px;
+            width: 105px;
+        }
+    }
+
+    .right-cloud {
+        position: absolute;
+        top: -7px;
+        right: -100px;
+
+        img {
+            width: 100%;
+        }
+
+        .big-cloud {
+            width: 163px;
+        }
+
+        .small-cloud {
+            width: 100px;
+            margin-left: 118px;
+            margin-top: -18px;
+        }
+    }
 }
 
-.simple-and-absolutely-safe-icon {
+.simple-and-absolutely-icon {
     text-align: center;
     margin-bottom: 13px;
+    position: relative;
+    width: 220px;
+    height: 220px;
+    margin: 0 auto;
+    @include flexbox-center;
+
+    span {
+        width: 100%;
+        @include flexbox-center;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .simple-and-absolutely-smile-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        opacity: 0;
+        visibility: hidden;
+        @include transform(translate(-50%, -50%));
+
+        img {
+            @include transform(scale(1));
+        }
+    }
+
+    &.show {
+        .simple-and-absolutely-shield-icon {
+            img {
+                @include transform(scale(0));
+                animation: shield_animated 0.5s;
+            }
+        }
+
+        .simple-and-absolutely-smile-icon {
+            opacity: 1;
+            visibility: visible;
+            @include transition(all 0.15s);
+            
+
+            img {
+                @include transform(scale(1));
+                animation: smile_animated 1.5s;
+            }
+        }
+    }
+}
+
+@keyframes smile_animated {
+    from {@include transform(scale(1));}
+    50% {@include transform(scale(1.2));}
+    to {@include transform(scale(1));}
+}
+
+@keyframes shield_animated {
+    from {@include transform(scale(1));}
+    to {@include transform(scale(0));}
 }

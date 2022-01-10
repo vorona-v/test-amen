@@ -25,12 +25,20 @@
 
     .our-service-offers-info-wrap {
         padding: 0 46px 0 6px;
+        opacity: 0;
+        @include transform(translateY(60px));
 
         h2 {
             margin-bottom: 32px;
         }
         h3 {
             margin-bottom: 52px;
+        }
+
+        &.element-show-js {
+            opacity: 1;
+            transition: all 1.5s;
+            @include transform(translateY(0%));
         }
     }
 
@@ -63,11 +71,11 @@
     .earphone-right-image {
         position: absolute;
         bottom: 0;
+        left: -200%;
+        z-index: 2;
 
         @include min-medium {
-            //top: 50%;
             bottom: initial;
-            //@include transform(translateY(-50%));
         }
 
         img {
@@ -76,16 +84,10 @@
     }
 
     .ticket-image {
-        //left: -20px;
         height: 100%;
 
         img {
             height: 100%;
-            //max-height: 420px;
-
-            @include min-medium {
-                //max-height: 600px;
-            }
         }
 
         @include min-medium {
@@ -96,10 +98,7 @@
     }
 
     .phone-image {
-        //left: 18%;
-
         @include min-medium {
-            //left: -100%;
             top: 10%;
         }
 
@@ -114,17 +113,12 @@
     }
 
     .earphone-right-image {
-        //left: 75%;
-        //@include transform(translateY(-115%));
 
         @include min-medium {
             top: 24%;
-            //left: 73%;
-            //@include transform(translateY(-88%));
         }
 
         img {
-            //height: 100%;
             max-height: 94px;
 
             @include min-medium {
@@ -134,18 +128,13 @@
     }
 
     .earphone-left-image {
-        //left: 59%;
         top: 50%;
-        //@include transform(translateY(-50%));
 
         @include min-medium {
-            //left: 56%;
             top: 34%;
-            //@include transform(translateY(-88%));
         }
         
         img {
-            //height: 100%;
             max-height: 94px;
 
             @include min-medium {
@@ -157,26 +146,20 @@
 
 
 .element-show-js {
-    &.ticket-image,
-    &.phone-image,
-    &.earphone-left-image,
-    &.earphone-right-image {
-        left: -200%;
-    }
     .our-service-offers-image-animation {
         &.ticket-image {
             left: -2%;
-            animation: ticket-image 3s;
+            animation: ticket-image 1.5s;
         }
     
         &.phone-image {
             left: 32%;
-            animation: phone-image 3s;
+            animation: phone-image 1.5s;
         }
     
         &.earphone-right-image {
             left: 85%;
-            animation: earphone-right-image 2s;
+            animation: earphone-right-image 1.5s;
         }
     
         &.earphone-left-image {
@@ -198,11 +181,11 @@
 }
 @keyframes earphone-right-image {
     from {left: -100%;}
-    75% {left: 90%;}
+    75% {left: 95%;}
     to {left: 85%;}
 }
 @keyframes earphone-left-image {
-    from {left: -100%;}
+    from {left: -98%;}
     75% {left: 82%;}
     to {left: 70%;}
 }
